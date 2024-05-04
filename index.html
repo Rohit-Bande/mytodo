@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoListApp</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(37, 36, 36);
+        }
+
+        .input{
+            padding: 5px 10px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .btn{
+            padding: 5px 10px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            background-color: yellow;
+            border: none;
+        }
+
+        .btn:hover{
+            background-color: greenyellow;
+            transition: .3s ease-in-out;
+        }
+
+        .para{
+            font-size: 18px;
+            text-transform: capitalize;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 0.3fr;
+            padding-right: 40px;
+            align-items: center;
+            height: auto;
+        }
+
+        .emptyValue{
+            background-color: red;
+            color: white;
+        }
+
+        .emptyValue::placeholder{
+            color: white;
+        }
+
+        .button{
+            padding: 5px 10px;
+            border-radius: 25px;
+            color: white;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 style="color: white; margin-bottom: 20px; text-align: center;">ToDoApp</h1>
+        <input type="text" class="input" placeholder="Enter value">
+        <button class="btn">Submit</button>
+
+        <section class="para"></section>
+    </div>
+
+    <script>
+        let inputBox = document.querySelector('.input');
+        let btn = document.querySelector('.btn');
+        let para = document.querySelector('.para');
+
+        btn.addEventListener('click', () => {
+           if(inputBox.value === ""){
+            inputBox.classList.add('emptyValue')
+           }else{
+            let divEle = document.createElement('div')
+            divEle.classList.add("para")
+            divEle.innerHTML = `<li>${inputBox.value}</li> <button class="deleteBtn">Delete</button>`
+            // inputBox.classList.remove('emptyValue')
+            divEle.textContent = inputBox.value;
+            para.append(divEle);
+            inputBox.value = '';
+           }
+        })
+
+    </script>
+</body>
+</html>
